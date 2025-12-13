@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginRequest;
+
+class AuthController extends Controller
+{
+    public function login(LoginRequest $request)
+    {
+      $credentials = $request->validated();
+
+      if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->route('items.index');
+    }
+
+    return back()->withErrors([
+      'email' => 'ログイン情報が正しくありません。',
+      ])->onlyInput('email');
+    }
+
+    public function logout()
+    {
+
+      Auth::logout();
+      request()->session()->invalidate();
+      request()->session()->regenerateToken();
+
+      return redirect('/login');
+    }
+}
