@@ -1,0 +1,67 @@
+@extends('layouts.app')
+
+@section('title', 'プロフィール設定画面')
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/mypage_profile.css')}}">
+@endsection
+
+@section('content')
+<div class="profile-setting-form">
+  <h2 class="profile-setting-form__heading content__heading">プロフィール設定</h2>
+
+  <!-- ここに写真と「画像を選択する」ボタン -->
+    <div class="profile-setting-form__image-area">
+      <div class="profile-setting-form__image-placeholder"></div>
+      <button class="profile-setting-form__image-select-btn" type="button">画像を選択する</button>
+    </div>
+
+  <div class="profile-setting-form__inner">
+    <form class="profile-setting-form__form" action="{{ route('mypage.profile') }}"method="post" novalidate>
+      @csrf
+      <div class="profile-setting-form__group">
+        <label class="profile-setting-form__label" for="name">ユーザー名</label>
+        <input class="profile-setting-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
+        <p class="profile-setting-form__error-message">
+          @error('name')
+          {{ $message }}
+          @enderror
+        </p>
+      </div>
+
+      <div class="profile-setting-form__group">
+        <label class="profile-setting-form__label" for="postal_code">郵便番号</label>
+        <input class="profile-setting-form__input" type="text" name="postal_code" id="postal_code">
+        <p class="profile-setting-form__error-message">
+          @error('postal_code')
+          {{ $message }}
+          @enderror
+        </p>
+      </div>
+
+      <div class="profile-setting-form__group">
+        <label class="profile-setting-form__label" for="address">住所</label>
+        <input class="profile-setting-form__input" type="text" name="address" id="address">
+        <p class="profile-setting-form__error-message">
+          @error('address')
+          {{ $message }}
+          @enderror
+        </p>
+      </div>
+
+      <div class="profile-setting-form__group">
+        <label class="profile-setting-form__label" for="building_name">建物名</label>
+        <input class="profile-setting-form__input" type="text" name="building_name" id="building_name">
+        <p class="profile-setting-form__error-message">
+          @error('building_name')
+          {{ $message }}
+          @enderror
+        </p>
+      </div>
+
+      <input class="profile-setting-form__btn btn" type="submit" value="更新する">
+    </form>
+
+  </div>
+</div>
+@endsection

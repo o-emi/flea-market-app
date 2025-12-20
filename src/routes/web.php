@@ -13,7 +13,11 @@ Route::post('/login', [AuthController::class, 'login'])
     ->name('login');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/mypage_profile', [MypageController::class, 'edit'])
-        ->name('mypage_profile');
+    Route::get('/item/{item_id}', [ItemController::class, 'show'])
+        ->name('items.show');
+
+    Route::get('/mypage/profile', [MypageController::class, 'edit'])
+        ->name('mypage.profile');
+
     Route::post('/logout', [AuthController::class, 'logout']) ->name('logout');
 });

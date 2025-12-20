@@ -12,7 +12,7 @@
 
 <body>
   <header class="header">
-    <img src="{{ asset('images/coachtech.png') }}" alt="COACHTECH ロゴ">
+    <img src="{{ asset('images/logo/coachtech.png') }}" alt="COACHTECH ロゴ">
   </header>
 
   <div class="login_register">
