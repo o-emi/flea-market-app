@@ -1,0 +1,34 @@
+@extends('layouts.app')
+
+@section('title', '商品一覧画面')
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/item/index.css')}}">
+@endsection
+
+@section('content')
+<div class="item-index-form">
+
+    <div class="item-index-form__tabs">
+        <span class="tab tab--active">おすすめ</span>
+        <span class="tab">マイリスト</span>
+    </div>
+
+      <div class="item-index-form__grid">
+        @foreach ($items as $item)
+          <div class="item-index-form-card">
+            <div class="item-index-form-card__image">
+            <img src="{{ $item->image_url }}" alt="{{ $item->name }}">
+
+              @if ($item->is_sold)
+                <span class="item-index-form-card__sold">Sold</span>
+              @endif
+            </div>
+
+            <p class="item-index-form-card__name">{{ $item->name }}</p>
+        </div>
+        @endforeach
+    </div>
+
+</div>
+@endsection

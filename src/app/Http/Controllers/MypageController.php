@@ -9,6 +9,6 @@ class MypageController extends Controller
 {
     public function edit()
     {
-        return view('mypage_profile');
+        return view('mypage/profile');
     }
 }

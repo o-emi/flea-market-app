@@ -13,7 +13,7 @@
 <body>
   <div class="app">
     <header class="header">
-      <img src="{{ asset('images/COACHTECH.png') }}" alt="COACHTECH ロゴ">
+      <img src="{{ asset('images/logo/coachtech.png') }}" alt="COACHTECH ロゴ">
 
         <div class="search-form">
           <input type="text" placeholder="なにをお探しですか?">
@@ -24,7 +24,7 @@
             @csrf
             <button type="submit" class="nav-link-btn">ログアウト</button>
           </form>
-          <a href="{{ route('mypage_profile') }}" class="nav-link">マイページ</a>
+          <a href="{{ route('mypage.profile') }}" class="nav-link">マイページ</a>
           <button class="primary-btn">出品</button>
         </nav>
     </header>

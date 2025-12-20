@@ -48,7 +48,7 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::createUsersUsing(CreateNewUser::class);
 
-        Fortify::redirects('register', '/mypage_profile');
+        Fortify::redirects('register', '/mypage/profile');
 
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;
