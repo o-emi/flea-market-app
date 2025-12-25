@@ -3,7 +3,7 @@
 @section('title', '商品一覧画面')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/item/index.css')}}">
+<link rel="stylesheet" href="{{ asset('css/items/index.css')}}">
 @endsection
 
 @section('content')
@@ -18,7 +18,9 @@
         @foreach ($items as $item)
           <div class="item-index-form-card">
             <div class="item-index-form-card__image">
-            <img src="{{ $item->image_url }}" alt="{{ $item->name }}">
+              <a href="{{ route('items.show', $item->id) }}">
+                <img src="{{ $item->image_url }}" alt="{{ $item->name }}">
+              </a>
 
               @if ($item->is_sold)
                 <span class="item-index-form-card__sold">Sold</span>
