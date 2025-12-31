@@ -16,7 +16,7 @@ class CommentRequest extends FormRequest
         return true;
     }
 
-    @return array
+    // @return array
 
     public function rules()
     {

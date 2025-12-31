@@ -43,7 +43,7 @@
 
           <div class="item-detail-form__action-item">
             <img src="{{ asset('images/logo/comment.png') }}" class="item-detail-form__icon" alt="コメント">
-            <span class="item-detail-form__count">1</span>
+            <span class="item-detail-form__count">{{ $item->comments->count() }}</span>
           </div>
         </div>
 
@@ -77,25 +77,47 @@
       </section>
 
       <section class="item-detail-form__section">
-        <h2 class="item-detail-form__section-title">コメント(1)</h2>
+        <h2 class="item-detail-form__section-title">コメント（{{ $item->comments->count() }}）</h2>
         <div class="item-detail-form__comment-list">
-          <article class="item-detail-form__comment">
-            <div class="item-detail-form__comment-user">
-              <div class="item-detail-form__comment-avatar"></div>
-              <span class="item-detail-form__comment-username">admin</span>
-            </div>
-            <div class="item-detail-form__comment-body">
-              こちらにコメントが入ります。
-            </div>
-          </article>
+          @foreach ($item->comments as $comment)
+            <article class="item-detail-form__comment">
+              <div class="item-detail-form__comment-user">
+                <div class="item-detail-form__comment-avatar"></div>
+                <span class="item-detail-form__comment-username">{{ $comment->user->name }}</span>
+              </div>
+              <div class="item-detail-form__comment-body">
+              {{ $comment->comment }}
+              </div>
+            </article>
+          @endforeach
         </div>
 
+        @auth
         <div class="item-detail-form__comment-post">
           <h3 class="item-detail-form__sub-title">商品へのコメント</h3>
-          <textarea class="item-detail-form__textarea"></textarea>
-          <button class="item-detail-form__btn item-detail-form__btn--primary">コメントを送信する</button>
-        </div>
-      </section>
 
-    </div> </div> </div>
+          <form action="{{ route('comments.store', $item) }}" method="POST">
+            @csrf
+
+          <textarea name="comment" class="item-detail-form__textarea"
+    >       {{ old('comment') }} </textarea>
+
+          @error('comment')
+            <p class="error">{{ $message }}</p>
+          @enderror
+
+
+          <button class="item-detail-form__btn item-detail-form__btn--primary">コメントを送信する
+          </button>
+        </form>
+        </div>
+        @endauth
+
+        @guest
+          <p>コメントを投稿するにはログインしてください</p>
+        @endguest
+
+    </div>
+  </div>
+</div>
 @endsection

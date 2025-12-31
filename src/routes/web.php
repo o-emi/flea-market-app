@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', [ItemController::class, 'index'])
     ->name('items.index');
@@ -19,10 +20,8 @@ Route::get('/item/{item}', [ItemController::class, 'show'])
 Route::middleware('auth')->group(function () {
   Route::get('/mypage', [MyPageController::class, 'index'])
     ->name('mypage.index');
-
   Route::get('/mypage/profile', [MypageController::class, 'edit'])
     ->name('mypage.profile');
-
   Route::post('/mypage/profile', [MypageController::class, 'update'])
         ->name('mypage.profile.update');
 
@@ -31,6 +30,9 @@ Route::middleware('auth')->group(function () {
 
   Route::post('/items/{item}/like', [LikeController::class, 'toggle'])
     ->name('items.like');
+
+  Route::post('/items/{item}/comments', [CommentController::class, 'store'])
+    ->name('comments.store');
 
   Route::get('/purchase/{item}', [ItemController::class, 'purchase'])
     ->name('items.purchase');
