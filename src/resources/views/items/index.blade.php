@@ -18,7 +18,7 @@
         @foreach ($items as $item)
           <div class="item-index-form-card">
             <div class="item-index-form-card__image">
-              <a href="{{ route('items.show', $item->id) }}">
+              <a href="{{ route('items.show', $item) }}">
                 <img src="{{ $item->image_url }}" alt="{{ $item->name }}">
               </a>
 
