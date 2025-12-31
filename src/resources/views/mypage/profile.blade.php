@@ -3,21 +3,20 @@
 @section('title', 'プロフィール設定画面')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/mypage_profile.css')}}">
+<link rel="stylesheet" href="{{ asset('css/mypage/profile.css')}}">
 @endsection
 
 @section('content')
 <div class="profile-setting-form">
   <h2 class="profile-setting-form__heading content__heading">プロフィール設定</h2>
 
-  <!-- ここに写真と「画像を選択する」ボタン -->
     <div class="profile-setting-form__image-area">
       <div class="profile-setting-form__image-placeholder"></div>
       <button class="profile-setting-form__image-select-btn" type="button">画像を選択する</button>
     </div>
 
   <div class="profile-setting-form__inner">
-    <form class="profile-setting-form__form" action="{{ route('mypage.profile') }}"method="post" novalidate>
+    <form class="profile-setting-form__form" action="{{ route('mypage.profile.update') }}"method="post" novalidate>
       @csrf
       <div class="profile-setting-form__group">
         <label class="profile-setting-form__label" for="name">ユーザー名</label>

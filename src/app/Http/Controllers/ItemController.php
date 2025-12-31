@@ -15,9 +15,21 @@ class ItemController extends Controller
       if (Auth::check()) {
         $query->where('user_id', '!=', Auth::id());
       }
-
       $items = $query->get();
 
       return view('items.index', compact('items'));
     }
+
+    public function show(Item $item)
+    {
+        $item = Item::with(['comments.user'])->findOrFail($item->id);
+        return view('items.detail', compact('item'));
+    }
+
+    public function purchase(Item $item)
+    {
+      return view('items.purchase', compact('item'));
+    }
+
+
 }

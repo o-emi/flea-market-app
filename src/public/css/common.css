@@ -55,6 +55,10 @@ body {
     flex-shrink: 0;
 }
 
+.logout-form {
+  display: inline;
+}
+
 .navigation a,
 .navigation .nav-link-btn {
     text-decoration: none;
