@@ -231,3 +231,9 @@ body {
     resize: vertical;
     font-family: inherit;
 }
+
+.item-detail-form .error {
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 5px;
+}
