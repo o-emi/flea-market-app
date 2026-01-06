@@ -18,7 +18,7 @@ body {
 
 .item-detail-form__inner {
     display: flex;
-    gap: 50px;
+    gap: 80px;
 }
 
 @media (max-width: 768px) {
@@ -151,7 +151,7 @@ body {
 }
 
 .item-detail-form__description {
-    white-space: pre-wrap;
+    text-align: left;
 }
 
 .item-detail-form__table {

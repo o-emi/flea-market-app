@@ -28,7 +28,9 @@ class ItemController extends Controller
 
     public function purchase(Item $item)
     {
-      return view('items.purchase', compact('item'));
+        $user = Auth::user();
+
+        return view('purchase.index', compact('item', 'user'));
     }
 
 

@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        <a href="{{ route('items.purchase', $item) }}" class="item-detail-form__btn item-detail-form__btn--primary">
+        <a href="{{ route('purchase.index', $item) }}" class="item-detail-form__btn item-detail-form__btn--primary">
           購入手続きへ
         </a>
       </section>

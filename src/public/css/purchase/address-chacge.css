@@ -1,0 +1,64 @@
+.address-change {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.address-change__heading {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.address-change__form {
+    width: 100%;
+}
+
+.address-change__group {
+    margin-bottom: 30px;
+}
+
+.address-change__label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.address-change__input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* ほんの少し角を丸く */
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.address-change__error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.address-change__btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 60px;
+    background-color: #ff5555; /* 画像の赤色に近い色 */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.address-change__btn:hover {
+    opacity: 0.8;
+}

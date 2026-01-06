@@ -6,6 +6,7 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PurchaseController;
 
 Route::get('/', [ItemController::class, 'index'])
     ->name('items.index');
@@ -30,11 +31,12 @@ Route::middleware('auth')->group(function () {
 
   Route::post('/items/{item}/like', [LikeController::class, 'toggle'])
     ->name('items.like');
-
   Route::post('/items/{item}/comments', [CommentController::class, 'store'])
     ->name('comments.store');
 
   Route::get('/purchase/{item}', [ItemController::class, 'purchase'])
-    ->name('items.purchase');
+    ->name('purchase.index');
+  Route::post('/purchase', [PurchaseController::class, 'store'])
+    ->name('purchase.store');
 
 });

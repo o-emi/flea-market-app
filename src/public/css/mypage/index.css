@@ -37,6 +37,7 @@
   font-size: 28px;
   font-weight: bold;
   margin: 0;
+  margin-right: 20px;
 }
 
 .mypage-form__edit-button {
@@ -99,15 +100,18 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   background-color: var(--color-bg-gray);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  color: #333;
-  font-weight: bold;
   margin-bottom: 10px;
-  background-size: cover;
-  background-position: center;
+}
+
+.mypage-form__product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .mypage-form__product-name {
@@ -118,15 +122,21 @@
 }
 
 @media (max-width: 850px) {
-  .mypage-form__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.mypage-form__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 20px;
+  padding-bottom: 80px;
+}
 }
 
 @media (max-width: 500px) {
-  .mypage-form__user-info {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
+.mypage-form__user-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+  margin-bottom: 60px;
+  padding-left: 20px;
+}
 }

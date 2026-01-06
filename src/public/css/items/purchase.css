@@ -1,0 +1,174 @@
+.purchase-form {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 40px;
+    color: #333;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.purchase-form__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+/* Element: Main content (Left) */
+.purchase-form__main {
+    flex: 1;
+}
+
+/* Element: Product section */
+.purchase-form__product {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.purchase-form__product-img {
+    width: 200px;
+    height: 200px;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.purchase-form__product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.purchase-form__product-img span {
+    font-size: 14px;
+    color: #333;
+}
+
+.purchase-form__product-name {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.purchase-form__product-price {
+    font-size: 24px;
+}
+
+/* Element: Section common */
+.purchase-form__section {
+    padding: 40px 0;
+}
+
+.purchase-form__section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.purchase-form__section-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.purchase-form__link {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.purchase-form__select {
+    width: 320px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 15px;
+}
+
+.purchase-form__address {
+    line-height: 2;
+    font-size: 16px;
+}
+
+.purchase-form__address-zip {
+    font-weight: bold;
+}
+
+.purchase-form__divider {
+    border: 0;
+    border-top: 1px solid #333;
+    margin: 0;
+}
+
+.purchase-form__sidebar {
+    width: 400px;
+    margin-top: 20px;
+}
+
+.purchase-form__input-group,
+.purchase-form__section-content {
+    margin-left: 25px; /
+    margin-top: 15px;
+}
+
+.purchase-form__summary {
+    border: 1px solid #333;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.purchase-form__summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.purchase-form__summary-table th,
+.purchase-form__summary-table td {
+    padding: 25px 30px;
+}
+
+.purchase-form__summary-table tr:first-child th,
+.purchase-form__summary-table tr:first-child td {
+    border-bottom: 1px solid #333;
+
+}
+
+.purchase-form__summary-table th {
+    text-align: left;
+    font-weight: normal;
+}
+
+.purchase-form__summary-table td {
+    text-align: right;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.purchase-form__btn {
+    width: 100%;
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    padding: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.purchase-form__btn:hover {
+    opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+    .purchase-form__container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .purchase-form__sidebar {
+        width: 100%;
+    }
+}
