@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Auth;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -28,6 +30,10 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::loginView(function () {
+            if (Auth::check()) {
+                return redirect()->route('items.index');
+            }
+
             return view('auth.login');
         });
 
