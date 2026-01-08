@@ -3,13 +3,14 @@
 @section('title', '商品購入画面')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/items/purchase.css')}}">
+<link rel="stylesheet" href="{{ asset('css/purchase/index.css')}}">
 @endsection
 
 @section('content')
 <div class="purchase-form">
     <div class="purchase-form__container">
         <div class="purchase-form__main">
+
             <section class="purchase-form__product">
                 <div class="purchase-form__product-img">
                     <img src="{{ asset($item->image_url) }}"alt="{{ $item->name }}">
@@ -38,7 +39,7 @@
             <section class="purchase-form__section">
                 <div class="purchase-form__section-header">
                     <h3 class="purchase-form__section-title">配送先</h3>
-                    <a href="#" class="purchase-form__link">変更する</a>
+                    <a href="{{ route('purchase.address-change', $item->id) }}" class="purchase-form__link">変更する</a>
                 </div>
                 <div class="purchase-form__section-content">
                   <div class="purchase-form__address">
@@ -66,12 +67,10 @@
                     </tr>
                 </table>
             </div>
+
             <form action="{{ route('purchase.store') }}" method="POST">
               @csrf
               <input type="hidden" name="item_id" value="{{ $item->id }}">
-
-              <input type="hidden" name="payment_method" id="payment_method_hidden">
-              <input type="hidden" name="address_id" value="{{ auth()->user()->id }}">
               <button type="submit" class="purchase-form__btn">購入する</button>
             </form>
         </aside>
@@ -85,15 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const hidden = document.getElementById('payment_method_hidden');
 
     select.addEventListener('change', function () {
-        if (this.value === 'konbini') {
-            summary.textContent = 'コンビニ払い';
-            hidden.value = 'konbini';
-        }
-
-        if (this.value === 'card') {
-            summary.textContent = 'クレジットカード';
-            hidden.value = 'card';
-        }
+        summary.textContent = this.options[this.selectedIndex].text;
+        hidden.value = this.value;
     });
 });
 </script>
