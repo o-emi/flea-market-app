@@ -1,10 +1,10 @@
-.address-change {
+.address-change-form {
     max-width: 600px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
-.address-change__heading {
+.address-change-form__heading {
     text-align: center;
     font-size: 24px;
     font-weight: bold;
@@ -12,15 +12,15 @@
     color: #333;
 }
 
-.address-change__form {
+.address-change-form__form {
     width: 100%;
 }
 
-.address-change__group {
+.address-change-form__group {
     margin-bottom: 30px;
 }
 
-.address-change__label {
+.address-change-form__label {
     display: block;
     font-size: 16px;
     font-weight: bold;
@@ -28,7 +28,7 @@
     color: #333;
 }
 
-.address-change__input {
+.address-change-form__input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -37,13 +37,13 @@
     box-sizing: border-box;
 }
 
-.address-change__error-message {
+.address-change-form__error-message {
     color: #ff0000;
     font-size: 14px;
     margin-top: 5px;
 }
 
-.address-change__btn {
+.address-change-form__btn {
     display: block;
     width: 100%;
     padding: 15px;
@@ -59,6 +59,6 @@
     transition: opacity 0.3s;
 }
 
-.address-change__btn:hover {
+.address-change-form__btn:hover {
     opacity: 0.8;
 }
