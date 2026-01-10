@@ -10,8 +10,15 @@
 <div class="item-index-form">
 
     <div class="item-index-form__tabs">
-        <span class="tab tab--active">おすすめ</span>
-        <span class="tab">マイリスト</span>
+        <a href="{{ route('items.index') }}"
+            class="tab {{ request('tab') !== 'mylist' ? 'tab--active' : '' }}">
+            おすすめ
+        </a>
+
+        <a href="{{ route('items.index', ['tab' => 'mylist']) }}"
+            class="tab {{ request('tab') === 'mylist' ? 'tab--active' : '' }}">
+              マイリスト
+        </a>
     </div>
 
       <div class="item-index-form__grid">

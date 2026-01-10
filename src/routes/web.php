@@ -18,8 +18,6 @@ Route::post('/login', [AuthController::class, 'login'])
 Route::get('/item/{item}', [ItemController::class, 'show'])
   ->name('items.show');
 
-Route::get('/mylist', [ItemController::class, 'mylist'])->name('items.mylist');
-
 
 Route::middleware('auth')->group(function () {
   Route::get('/mypage', [MyPageController::class, 'index'])
