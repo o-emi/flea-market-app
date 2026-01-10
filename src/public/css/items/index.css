@@ -9,7 +9,6 @@
     gap: 40px;
     border-bottom: 1px solid #ccc;
     margin-bottom: 25px;
-    /* padding-left: 0; */
 }
 
 .tab {
@@ -17,13 +16,14 @@
     padding-bottom: 8px;
     font-weight: bold;
     color: #333;
-    /* padding-left: 20; */
+    text-decoration: none;
 }
 
 .tab--active {
-    color: #ff5a5fr;
+    color: #ff5a5f;
     font-weight: bold;
-    border-bottom: 2px solid red;
+    border-bottom: none;
+    text-decoration: none;
 }
 
 .item-index-form__grid {
@@ -36,8 +36,6 @@
 
 .item-index-form-card {
     width: 100%;
-    /* max-width: 220px;
-    margin: 0 auto; */
 }
 
 .item-index-form-card__image {

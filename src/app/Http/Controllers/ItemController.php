@@ -8,17 +8,34 @@ use App\Models\Item;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-      $query = Item::query();
+        $tab = $request->query('tab');
 
-      if (Auth::check()) {
-        $query->where('user_id', '!=', Auth::id());
-      }
-      $items = $query->get();
+        if ($tab === 'mylist') {
 
-      return view('items.index', compact('items'));
+            if (!Auth::check()) {
+                $items = collect();
+            } else {
+                $items = Item::whereHas('likes', function ($query) {
+                    $query->where('user_id', Auth::id());
+                })->get();
+            }
+
+        } else {
+            $query = Item::query();
+
+            if (Auth::check()) {
+                $query->where('user_id', '!=', Auth::id());
+            }
+
+            $items = $query->get();
+        }
+
+        return view('items.index', compact('items', 'tab'));
     }
+
+
 
     public function show(Item $item)
     {

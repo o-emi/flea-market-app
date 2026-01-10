@@ -18,6 +18,7 @@ Route::post('/login', [AuthController::class, 'login'])
 Route::get('/item/{item}', [ItemController::class, 'show'])
   ->name('items.show');
 
+
 Route::middleware('auth')->group(function () {
   Route::get('/mypage', [MyPageController::class, 'index'])
     ->name('mypage.index');
