@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        <a href="{{ route('items.purchase', $item) }}" class="item-detail-form__btn item-detail-form__btn--primary">
+        <a href="{{ route('purchase.index', $item) }}" class="item-detail-form__btn item-detail-form__btn--primary">
           購入手続きへ
         </a>
       </section>
@@ -85,38 +85,33 @@
                 <div class="item-detail-form__comment-avatar"></div>
                 <span class="item-detail-form__comment-username">{{ $comment->user->name }}</span>
               </div>
-              <div class="item-detail-form__comment-body">
-              {{ $comment->comment }}
-              </div>
+              <div class="item-detail-form__comment-body">{{ $comment->comment }}</div>
             </article>
           @endforeach
         </div>
 
-        @auth
         <div class="item-detail-form__comment-post">
           <h3 class="item-detail-form__sub-title">商品へのコメント</h3>
 
-          <form action="{{ route('comments.store', $item) }}" method="POST">
-            @csrf
+          @auth
+            <form action="{{ route('comments.store', $item) }}" method="POST">
+              @csrf
 
-          <textarea name="comment" class="item-detail-form__textarea"
-    >       {{ old('comment') }} </textarea>
-
-          @error('comment')
-            <p class="error">{{ $message }}</p>
-          @enderror
+              <textarea name="comment" class="item-detail-form__textarea">{{ old('comment') }}</textarea>
 
 
-          <button class="item-detail-form__btn item-detail-form__btn--primary">コメントを送信する
-          </button>
-        </form>
+              @error('comment')
+                <div class="error">{{ $message }}</div>
+              @enderror
+
+
+              <button class="item-detail-form__btn item-detail-form__btn--primary">コメントを送信する
+              </button>
+            </form>
+          @else
+            <p class="item-detail-form__login-notice">コメントを投稿するにはログインしてください</p>
+          @endauth
         </div>
-        @endauth
-
-        @guest
-          <p>コメントを投稿するにはログインしてください</p>
-        @endguest
-
     </div>
   </div>
 </div>

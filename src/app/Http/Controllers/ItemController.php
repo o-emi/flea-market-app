@@ -28,7 +28,15 @@ class ItemController extends Controller
 
     public function purchase(Item $item)
     {
-      return view('items.purchase', compact('item'));
+        if ($item->is_sold) {
+        return redirect()
+            ->route('items.index')
+            ->with('error', 'この商品はすでに購入されています');
+        }
+
+        $user = Auth::user();
+
+        return view('purchase.index', compact('item', 'user'));
     }
 
 

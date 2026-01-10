@@ -29,38 +29,16 @@
 
     <section class="mypage-form__content">
       <div class="mypage-form__grid">
-        <article class="mypage-form__product-card">
-          <div class="mypage-form__product-image">商品画像</div>
-          <p class="mypage-form__product-name">商品名</p>
-        </article>
-        <article class="mypage-form__product-card">
-          <div class="mypage-form__product-image">商品画像</div>
-          <p class="mypage-form__product-name">商品名</p>
-        </article>
-        <article class="mypage-form__product-card">
-          <div class="mypage-form__product-image">商品画像</div>
-          <p class="mypage-form__product-name">商品名</p>
-        </article>
-        <article class="mypage-form__product-card">
-          <div class="mypage-form__product-image">商品画像</div>
-          <p class="mypage-form__product-name">商品名</p>
-        </article>
-        <article class="mypage-form__product-card">
-          <div class="mypage-form__product-image">商品画像</div>
-          <p class="mypage-form__product-name">商品名</p>
-        </article>
-        <article class="mypage-form__product-card">
-          <div class="mypage-form__product-image">商品画像</div>
-          <p class="mypage-form__product-name">商品名</p>
-        </article>
-        <article class="mypage-form__product-card">
-          <div class="mypage-form__product-image">商品画像</div>
-          <p class="mypage-form__product-name">商品名</p>
-        </article>
-        <article class="mypage-form__product-card">
-          <div class="mypage-form__product-image">商品画像</div>
-          <p class="mypage-form__product-name">商品名</p>
-        </article>
+        @forelse ($purchasedItems as $item)
+          <article class="mypage-form__product-card">
+            <div class="mypage-form__product-image">
+              <img src="{{ asset($item->image_url) }}" alt="{{ $item->name }}">
+            </div>
+            <p class="mypage-form__product-name">{{ $item->name }}</p>
+          </article>
+        @empty
+          <p>購入した商品はありません</p>
+        @endforelse
       </div>
     </section>
 
