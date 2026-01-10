@@ -16,7 +16,10 @@
       </div>
       <h1 class="mypage-form__user-name">ユーザー名</h1>
       <div class="mypage-form__action">
-        <a href="#" class="mypage-form__edit-button">プロフィールを編集</a>
+        <a href="{{ route('mypage.profile') }}" class="mypage-form__edit-button">
+        プロフィールを編集
+        </a>
+
       </div>
     </section>
 

@@ -36,6 +36,6 @@ class MypageController extends Controller
             ])
         );
 
-      return redirect()->route('items.index');
+      return redirect()->route('mypage.index');
     }
 }

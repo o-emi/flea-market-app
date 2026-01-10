@@ -20,7 +20,7 @@ Route::get('/item/{item}', [ItemController::class, 'show'])
 
 
 Route::middleware('auth')->group(function () {
-  Route::get('/mypage', [MyPageController::class, 'index'])
+  Route::get('/mypage', [MypageController::class, 'index'])
     ->name('mypage.index');
   Route::get('/mypage/profile', [MypageController::class, 'edit'])
     ->name('mypage.profile');
