@@ -43,11 +43,19 @@
                 </div>
                 <div class="purchase-form__section-content">
                   <div class="purchase-form__address">
-                      <p class="purchase-form__address-zip">〒 {{ $user->postal_code ?? '---' }}
+                      @php
+                      $address = session('purchase_address');
+                      @endphp
+
+                      <p class="purchase-form__address-zip">
+                          〒 {{ $address['postal_code'] ?? $user->postal_code ?? '---' }}
                       </p>
-                      <p class="purchase-form__address-text">{{ $user->address ?? '住所未登録' }} {{ $user->building_name ?? '' }}
+
+                      <p class="purchase-form__address-text">
+                          {{ $address['address'] ?? $user->address ?? '住所未登録' }}
+                          {{ $address['building_name'] ?? $user->building_name ?? '' }}
                       </p>
-                    </div>
+                  </div>
                 </div>
             </section>
 
@@ -71,6 +79,9 @@
             <form action="{{ route('purchase.store') }}" method="POST">
               @csrf
               <input type="hidden" name="item_id" value="{{ $item->id }}">
+              <input type="hidden" name="payment_method" id="payment_method_hidden">
+              <input type="hidden" name="address_id" value="{{ auth()->id() }}">
+
               <button type="submit" class="purchase-form__btn">購入する</button>
             </form>
         </aside>

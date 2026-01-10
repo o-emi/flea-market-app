@@ -26,7 +26,7 @@ class PurchaseRequest extends FormRequest
         return [
             'payment_method' => ['required'],
             'address_id' => ['required'],
-            'item_id' => ['required', 'exists:items,id'],
+            'building_name' => ['nullable'],
         ];
     }
 }

@@ -11,7 +11,7 @@
   <h2 class="address-change-form__heading content__heading">住所の変更</h2>
 
   <div class="address-change-form__inner">
-    <form class="address-change-form__form" action="{{ route('purchase.address-change', $item->id) }}"method="post" novalidate>
+    <form class="address-change-form__form" action="{{ route('purchase.address.store', $item->id) }}"method="post" novalidate>
       @csrf
 
       <div class="address-change-form__group">
