@@ -29,4 +29,12 @@ class PurchaseRequest extends FormRequest
             'building_name' => ['nullable'],
         ];
     }
+
+    public function messages()
+    {
+    return [
+        'payment_method.required' => '支払い方法を選択してください。',
+    ];
+    }
 }
+

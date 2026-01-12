@@ -31,6 +31,9 @@
                         <option value="konbini">コンビニ払い</option>
                         <option value="card">クレジットカード</option>
                     </select>
+                    @error('payment_method')
+                        <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </section>
 
