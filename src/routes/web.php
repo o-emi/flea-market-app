@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ItemController;
@@ -10,6 +11,13 @@ use App\Http\Controllers\PurchaseController;
 
 Route::get('/', [ItemController::class, 'index'])
     ->name('items.index');
+
+Route::get('/register', [RegisterController::class, 'create'])
+    ->middleware('guest')
+    ->name('register');
+
+Route::post('/register', [RegisterController::class, 'store'])
+    ->middleware('guest');
 
 Route::post('/login', [AuthController::class, 'login'])
     ->middleware('guest')
