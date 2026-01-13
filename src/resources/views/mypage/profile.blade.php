@@ -20,7 +20,7 @@
       @csrf
       <div class="profile-setting-form__group">
         <label class="profile-setting-form__label" for="name">ユーザー名</label>
-        <input class="profile-setting-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
+        <input class="profile-setting-form__input" type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
         <p class="profile-setting-form__error-message">
           @error('name')
           {{ $message }}
@@ -30,7 +30,7 @@
 
       <div class="profile-setting-form__group">
         <label class="profile-setting-form__label" for="postal_code">郵便番号</label>
-        <input class="profile-setting-form__input" type="text" name="postal_code" id="postal_code">
+        <input class="profile-setting-form__input" type="text" name="postal_code" id="postal_code" value="{{ old('postal_code', $user->postal_code) }}">
         <p class="profile-setting-form__error-message">
           @error('postal_code')
           {{ $message }}
@@ -40,7 +40,7 @@
 
       <div class="profile-setting-form__group">
         <label class="profile-setting-form__label" for="address">住所</label>
-        <input class="profile-setting-form__input" type="text" name="address" id="address">
+        <input class="profile-setting-form__input" type="text" name="address" id="address" value="{{ old('address', $user->address) }}">
         <p class="profile-setting-form__error-message">
           @error('address')
           {{ $message }}

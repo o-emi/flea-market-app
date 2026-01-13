@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Like;
+use App\Models\Purchase;
+use App\Models\Item;
 
 class User extends Authenticatable
 {
@@ -53,6 +55,12 @@ class User extends Authenticatable
 
     public function purchases()
     {
-    return $this->hasMany(Purchase::class);
+        return $this->hasMany(Purchase::class);
+    }
+
+
+    public function purchasedItems()
+    {
+        return $this->belongsToMany(Item::class, 'purchases');
     }
 }

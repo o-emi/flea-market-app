@@ -71,18 +71,36 @@
 }
 
 .mypage-form__tab-item {
-  padding: 10px 25px;
+  position: relative;
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
-  color: var(--color-text-sub);
 }
 
+.mypage-form__tab-item a {
+  display: block;
+  padding: 10px 25px;
+  text-decoration: none;
+  color: var(--color-text-sub);
+  transition: color 0.3s ease;
+}
+
+.mypage-form__tab-item--active a {
+  color: var(--color-brand);
+}
 
 .mypage-form__tab-item--active {
   color: var(--color-brand);
-  border-bottom: 3px solid var(--color-brand);
-  margin-bottom: -1px;
+}
+
+.mypage-form__tab-item--active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--color-brand);
 }
 
 .mypage-form__grid {
