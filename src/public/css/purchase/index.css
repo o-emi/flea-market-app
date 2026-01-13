@@ -97,6 +97,16 @@
     font-size: 15px;
 }
 
+.error-message {
+    color: #e3342f;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.is-invalid {
+    border: 1px solid #e3342f;
+}
+
 .purchase-form__address {
     line-height: 2;
     font-size: 16px;
