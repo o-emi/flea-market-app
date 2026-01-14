@@ -56,5 +56,10 @@ class ItemController extends Controller
         return view('purchase.index', compact('item', 'user'));
     }
 
+    public function create()
+    {
+        return view('items.create');
+    }
+
 
 }
