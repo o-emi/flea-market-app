@@ -50,7 +50,7 @@
 
       <div class="profile-setting-form__group">
         <label class="profile-setting-form__label" for="building_name">建物名</label>
-        <input class="profile-setting-form__input" type="text" name="building_name" id="building_name">
+        <input class="profile-setting-form__input" type="text" name="building_name" id="building_name" value="{{ old('building_name', $user->building_name) }}">
         <p class="profile-setting-form__error-message">
           @error('building_name')
           {{ $message }}
