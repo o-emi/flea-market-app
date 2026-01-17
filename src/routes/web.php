@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     ->name('purchase.address-change');
   Route::post('/purchase/address/{item}', [PurchaseController::class, 'storeAddress'])
     ->name('purchase.address.store');
-  Route::post('/purchase', [PurchaseController::class, 'store'])
+  Route::post('/purchase/{item}', [PurchaseController::class, 'store'])
     ->name('purchase.store');
 
 });
