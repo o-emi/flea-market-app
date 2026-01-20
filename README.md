@@ -30,11 +30,22 @@ php artisan key:generate
 ``` bash
 php artisan migrate
 ```
+- Migration に関する補足
+本プロジェクトでは、既存カラム名の変更（renameColumn）を行ったため、
+Doctrine DBAL を使用しています。
+Laravel の仕様上、renameColumn を使用する場合は
+Doctrine DBAL が必要となるため、以下をインストールしてください。
+
+```bash
+composer require doctrine/dbal:^3.0
+```
+※ Laravel と DBAL のバージョン互換性のため、3系を指定しています。
 
 7. シーディングの実行
 ``` bash
 php artisan db:seed
 ```
+
 8. シンボリックリンク作成
 ``` bash
 php artisan storage:link
