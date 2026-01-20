@@ -52,6 +52,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    outline: 2px solid red;
 }
 
 .item-index-form-card__sold {

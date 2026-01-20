@@ -32,7 +32,7 @@ class ItemSeeder extends Seeder
           'description' => '高速で信頼性の高いハードディスク',
           'image_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
           'condition' => '目立った傷や汚れなし',
-          'is_sold' => true,
+          'is_sold' => false,
           'user_id' => 2,
         ],
         [
@@ -42,7 +42,7 @@ class ItemSeeder extends Seeder
           'description' => '新鮮な玉ねぎ3束のセット',
           'image_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
           'condition' => 'やや傷や汚れあり',
-          'is_sold' => true,
+          'is_sold' => false,
           'user_id' => 3,
         ],
         [
@@ -96,7 +96,7 @@ class ItemSeeder extends Seeder
           'user_id' => 8,
         ],
         [
-          'name' => 'コーヒーミル腕時計',
+          'name' => 'コーヒーミル',
           'price' => 4000,
           'brand' => 'Starbacks',
           'description' => '手動のコーヒーミル',
