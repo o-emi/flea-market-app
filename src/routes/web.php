@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
 
   Route::get('/sell', [ItemController::class, 'create'])
     ->name('sell');
+  Route::post('/items', [ItemController::class, 'store'])
+    ->name('items.store');
 
   Route::post('/items/{item}/like', [LikeController::class, 'toggle'])
     ->name('items.like');
