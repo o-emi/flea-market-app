@@ -61,5 +61,29 @@ class ItemController extends Controller
         return view('items.create');
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'item_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'name' => 'required',
+            'price' => 'required|integer',
+        ]);
+
+        $imagePath = $request->file('item_image')->store('items', 'public');
+
+        Item::create([
+            'user_id' => auth()->id(),
+            'image_path' => $imagePath,
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'description' => $request->description,
+            'price' => $request->price,
+            'condition' => $request->condition,
+        ]);
+
+        return redirect()->route('items.index');
+    }
+
+
 
 }
