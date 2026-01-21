@@ -13,7 +13,7 @@
 
             <section class="purchase-form__product">
                 <div class="purchase-form__product-img">
-                    <img src="{{ asset($item->image_url) }}"alt="{{ $item->name }}">
+                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
                 </div>
                 <div class="purchase-form__product-info">
                     <h2>{{ $item->name }}</h2>

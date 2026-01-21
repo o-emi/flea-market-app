@@ -41,7 +41,7 @@
           @forelse ($sellItems as $item)
             <article class="mypage-form__product-card">
               <div class="mypage-form__product-image">
-                <img src="{{ asset($item->image_url) }}" alt="{{ $item->name }}">
+                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
               </div>
               <p class="mypage-form__product-name">{{ $item->name }}</p>
             </article>
@@ -55,7 +55,7 @@
           @forelse ($purchasedItems as $item)
             <article class="mypage-form__product-card">
               <div class="mypage-form__product-image">
-                <img src="{{ asset($item->image_url) }}" alt="{{  $item->name }}">
+                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
               </div>
               <p class="mypage-form__product-name">{{ $item->name }}</p>
             </article>

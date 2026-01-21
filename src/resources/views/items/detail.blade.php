@@ -11,7 +11,7 @@
   <div class="item-detail-form__inner">
 
     <div class="item-detail-form__image-wrapper">
-      <img src="{{ asset($item->image_url) }}" alt="{{ $item->name }}" class="item-detail-form__image">
+      <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="item-detail-form__image">
     </div>
 
     <div class="item-detail-form__content">

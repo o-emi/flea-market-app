@@ -26,7 +26,7 @@
           <div class="item-index-form-card">
             <div class="item-index-form-card__image">
               <a href="{{ route('items.show', $item) }}">
-                <img src="{{ $item->image_url }}" alt="{{ $item->name }}">
+                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
               </a>
 
               @if ($item->is_sold)
