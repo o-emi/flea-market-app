@@ -18,7 +18,7 @@ class MypageController extends Controller
 
         $sellItems = Item::where('user_id', $user->id)->get();
 
-        $purchasedItems = $user->purchasedItems;
+        $purchasedItems = $user->purchasedItems()->get();
 
         return view('mypage.index', compact(
         'user',
