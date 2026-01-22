@@ -8,16 +8,23 @@
 
 @section('content')
 <div class="profile-setting-form">
-  <h2 class="profile-setting-form__heading content__heading">プロフィール設定</h2>
+    <h2 class="profile-setting-form__heading content__heading">プロフィール設定</h2>
+
+    <div class="profile-setting-form__inner">
+      <form class="profile-setting-form__form" action="{{ route('mypage.profile.update') }}"method="post" enctype="multipart/form-data" novalidate>
+      @csrf
 
     <div class="profile-setting-form__image-area">
-      <div class="profile-setting-form__image-placeholder"></div>
-      <button class="profile-setting-form__image-select-btn" type="button">画像を選択する</button>
-    </div>
+        <div class="profile-setting-form__image-placeholder">
+            <img src="{{ $user->profile_image_path ? asset('storage/' . $user->profile_image_path) : '#' }}"alt="プロフィール画像"
+          class="profile-image">
+        </div>
 
-  <div class="profile-setting-form__inner">
-    <form class="profile-setting-form__form" action="{{ route('mypage.profile.update') }}"method="post" novalidate>
-      @csrf
+        <input type="file" id="profile_image_input" name="profile_image" style="display:none;">
+        <label for="profile_image_input" class="profile-setting-form__image-select-btn">画像を選択する
+        </label>
+    </div>
+
       <div class="profile-setting-form__group">
         <label class="profile-setting-form__label" for="name">ユーザー名</label>
         <input class="profile-setting-form__input" type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
@@ -63,4 +70,5 @@
 
   </div>
 </div>
+
 @endsection
