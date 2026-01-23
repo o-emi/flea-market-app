@@ -68,6 +68,7 @@ class ItemController extends Controller
             'item_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'name' => 'required',
             'price' => 'required|integer',
+            'condition'  => 'required',
         ]);
 
         $imagePath = $request->file('item_image')->store('items', 'public');

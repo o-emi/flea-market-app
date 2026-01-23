@@ -43,11 +43,11 @@
         <section class="item-exhibition-form-section">
             <h3 class="section-label">商品の状態</h3>
             <div class="select-wrapper">
-                <select name="condition">
-                    <option value="" selected disabled>選択してください</option>
-                    <option value="1">新品、未使用</option>
-                    <option value="2">未使用に近い</option>
-                    <option value="3">目立った傷や汚れなし</option>
+                <select name="condition" required>
+                    <option value="">選択してください</option>
+                    <option value="新品、未使用">新品、未使用</option>
+                    <option value="未使用に近い">未使用に近い</option>
+                    <option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
                 </select>
             </div>
         </section>
