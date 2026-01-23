@@ -16,7 +16,7 @@
 
     <div class="profile-setting-form__image-area">
         <div class="profile-setting-form__image-placeholder">
-            <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : '#' }}"alt="プロフィール画像"
+            <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : '#' }}"alt=""
           class="profile-image">
         </div>
 
