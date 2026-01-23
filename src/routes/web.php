@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/mypage', [MypageController::class, 'index'])
     ->name('mypage.index');
   Route::get('/mypage/profile', [MypageController::class, 'edit'])
-    ->name('mypage.profile');
+    ->name('mypage.profile.edit');
   Route::post('/mypage/profile', [MypageController::class, 'update'])
         ->name('mypage.profile.update');
 
