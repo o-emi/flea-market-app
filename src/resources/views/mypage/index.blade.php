@@ -20,7 +20,7 @@
                 >
             @else
                 <img src="{{ asset('images/default-user.png') }}"
-                alt="デフォルトプロフィール画像"
+                alt=""
                 class="mypage-form__avatar-image"
                 >
             @endif
