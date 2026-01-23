@@ -27,17 +27,23 @@
 
         <section class="item-exhibition-form-section">
             <h3 class="section-label">カテゴリー</h3>
+
             <div class="category-group">
-                @php
-                    $categories = ['ファッション', '家電', 'インテリア', 'レディース', 'メンズ', 'コスメ', '本', 'ゲーム', 'スポーツ', 'キッチン', 'ハンドメイド', 'アクセサリー', 'おもちゃ', 'ベビー・キッズ'];
-                @endphp
                 @foreach($categories as $category)
                     <label class="category-label">
-                        <input type="checkbox" name="categories[]" value="{{ $category }}">
-                        <span>{{ $category }}</span>
+                        <input
+                            type="checkbox"
+                            name="categories[]"
+                            value="{{ $category->id }}"
+                >
+                      <span>{{ $category->name }}</span>
                     </label>
                 @endforeach
-            </div>
+              </div>
+
+              @error('categories')
+                  <p class="error-message">{{ $message }}</p>
+              @enderror
         </section>
 
         <section class="item-exhibition-form-section">

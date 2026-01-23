@@ -65,8 +65,9 @@
           <tr>
             <th class="item-detail-form__table-header">カテゴリー</th>
             <td class="item-detail-form__table-data">
-              <span class="item-detail-form__badge">洋服</span>
-              <span class="item-detail-form__badge">メンズ</span>
+                @foreach($item->categories as $category)
+                    <span class="item-detail-form__badge">{{ $category->name }}</span>
+                @endforeach
             </td>
           </tr>
           <tr>

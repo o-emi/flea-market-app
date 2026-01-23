@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
@@ -59,7 +60,9 @@ class ItemController extends Controller
 
     public function create()
     {
-        return view('items.create');
+        $categories = Category::all();
+
+        return view('items.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -69,11 +72,12 @@ class ItemController extends Controller
             'name' => 'required',
             'price' => 'required|integer',
             'condition'  => 'required',
+            'categories' => 'required|array|min:1',
         ]);
 
         $imagePath = $request->file('item_image')->store('items', 'public');
 
-        Item::create([
+        $item = Item::create([
             'user_id' => auth()->id(),
             'image_path' => $imagePath,
             'name' => $request->name,
@@ -82,6 +86,10 @@ class ItemController extends Controller
             'price' => $request->price,
             'condition' => $request->condition,
         ]);
+
+        if ($request->has('categories')) {
+            $item->categories()->attach($request->categories);
+        }
 
         return redirect()->route('items.index');
     }
