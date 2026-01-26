@@ -18,7 +18,7 @@ class Item extends Model
         'price',
         'brand',
         'description',
-        'image_url',
+        'image_path',
         'condition',
         'is_sold',
     ];
@@ -41,6 +41,11 @@ class Item extends Model
     public function purchases()
     {
     return $this->hasMany(\App\Models\Purchase::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }
 

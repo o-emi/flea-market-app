@@ -31,12 +31,14 @@ Route::middleware('auth')->group(function () {
   Route::get('/mypage', [MypageController::class, 'index'])
     ->name('mypage.index');
   Route::get('/mypage/profile', [MypageController::class, 'edit'])
-    ->name('mypage.profile');
+    ->name('mypage.profile.edit');
   Route::post('/mypage/profile', [MypageController::class, 'update'])
         ->name('mypage.profile.update');
 
   Route::get('/sell', [ItemController::class, 'create'])
     ->name('sell');
+  Route::post('/items', [ItemController::class, 'store'])
+    ->name('items.store');
 
   Route::post('/items/{item}/like', [LikeController::class, 'toggle'])
     ->name('items.like');
@@ -49,7 +51,7 @@ Route::middleware('auth')->group(function () {
     ->name('purchase.address-change');
   Route::post('/purchase/address/{item}', [PurchaseController::class, 'storeAddress'])
     ->name('purchase.address.store');
-  Route::post('/purchase', [PurchaseController::class, 'store'])
+  Route::post('/purchase/{item}', [PurchaseController::class, 'store'])
     ->name('purchase.store');
 
 });

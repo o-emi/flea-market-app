@@ -14,21 +14,17 @@ class PurchaseController extends Controller
 {
     public function show(Item $item)
     {
-        if (!session()->has('purchase_address')) {
-            session([
-                'purchase_address' => [
-                    'postal_code'   => auth()->user()->postal_code,
-                    'address'       => auth()->user()->address,
-                    'building_name' => auth()->user()->building_name,
-                ]
-            ]);
-        }
+        $user = auth()->user();
 
-        $address = session('purchase_address');
+        $address = session('purchase_address')
+            ?? [
+                'postal_code'   => $user->postal_code,
+                'address'       => $user->address,
+                'building_name' => $user->building_name,
+            ];
 
-        return view('purchase.index', compact('item', 'address'));
-    }
-
+        return view('purchase.index', compact('item', 'user', 'address'));
+      }
 
     public function editAddress(Item $item)
     {
@@ -64,10 +60,10 @@ class PurchaseController extends Controller
 
         Purchase::create([
             'user_id'       => auth()->id(),
-            'item_id'       => $item->id,
-            'postal_code'   => session('purchase_address.postal_code'),
-            'address'       => session('purchase_address.address'),
-            'building_name' => session('purchase_address.building_name'),
+            'item_id'       => $request->item_id,
+            'postal_code'   => $request->postal_code,
+            'address'       => $request->address,
+            'building_name' => $request->building_name,
             'payment_method'=> $request->payment_method,
         ]);
 
@@ -79,3 +75,4 @@ class PurchaseController extends Controller
     }
 
 }
+

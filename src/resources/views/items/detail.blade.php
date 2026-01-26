@@ -11,7 +11,7 @@
   <div class="item-detail-form__inner">
 
     <div class="item-detail-form__image-wrapper">
-      <img src="{{ asset($item->image_url) }}" alt="{{ $item->name }}" class="item-detail-form__image">
+      <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="item-detail-form__image">
     </div>
 
     <div class="item-detail-form__content">
@@ -65,8 +65,9 @@
           <tr>
             <th class="item-detail-form__table-header">カテゴリー</th>
             <td class="item-detail-form__table-data">
-              <span class="item-detail-form__badge">洋服</span>
-              <span class="item-detail-form__badge">メンズ</span>
+                @foreach($item->categories as $category)
+                    <span class="item-detail-form__badge">{{ $category->name }}</span>
+                @endforeach
             </td>
           </tr>
           <tr>

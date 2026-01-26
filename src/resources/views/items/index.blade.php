@@ -10,14 +10,19 @@
 <div class="item-index-form">
 
     <div class="item-index-form__tabs">
-        <a href="{{ route('items.index') }}"
-            class="tab {{ request('tab') !== 'mylist' ? 'tab--active' : '' }}">
+        <a href="{{ route('items.index', [
+            'keyword' => request('keyword')
+        ]) }}"
+        class="tab {{ request('tab') !== 'mylist' ? 'tab--active' : '' }}">
             おすすめ
         </a>
 
-        <a href="{{ route('items.index', ['tab' => 'mylist']) }}"
-            class="tab {{ request('tab') === 'mylist' ? 'tab--active' : '' }}">
-              マイリスト
+        <a href="{{ route('items.index', [
+            'tab' => 'mylist',
+            'keyword' => request('keyword')
+        ]) }}"
+        class="tab {{ request('tab') === 'mylist' ? 'tab--active' : '' }}">
+            マイリスト
         </a>
     </div>
 
@@ -26,7 +31,7 @@
           <div class="item-index-form-card">
             <div class="item-index-form-card__image">
               <a href="{{ route('items.show', $item) }}">
-                <img src="{{ $item->image_url }}" alt="{{ $item->name }}">
+                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
               </a>
 
               @if ($item->is_sold)

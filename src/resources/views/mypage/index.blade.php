@@ -12,11 +12,24 @@
 
     <section class="mypage-form__user-info">
       <div class="mypage-form__avatar-wrapper">
-        <div class="mypage-form__avatar"></div>
+        <div class="mypage-form__avatar">
+            @if ($user->profile_image)
+                <img src="{{ asset('storage/' . $user->profile_image) }}"
+                alt="プロフィール画像"
+                class="mypage-form__avatar-image"
+                >
+            @else
+                <img src="{{ asset('images/default-user.png') }}"
+                alt=""
+                class="mypage-form__avatar-image"
+                >
+            @endif
+        </div>
       </div>
+
       <h1 class="mypage-form__user-name">{{ $user->name }}</h1>
       <div class="mypage-form__action">
-        <a href="{{ route('mypage.profile') }}" class="mypage-form__edit-button">
+        <a href="{{ route('mypage.profile.edit') }}" class="mypage-form__edit-button">
         プロフィールを編集
         </a>
 
@@ -41,7 +54,7 @@
           @forelse ($sellItems as $item)
             <article class="mypage-form__product-card">
               <div class="mypage-form__product-image">
-                <img src="{{ asset($item->image_url) }}" alt="{{ $item->name }}">
+                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
               </div>
               <p class="mypage-form__product-name">{{ $item->name }}</p>
             </article>
@@ -55,7 +68,7 @@
           @forelse ($purchasedItems as $item)
             <article class="mypage-form__product-card">
               <div class="mypage-form__product-image">
-                <img src="{{ asset($item->image_url) }}" alt="{{  $item->name }}">
+                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
               </div>
               <p class="mypage-form__product-name">{{ $item->name }}</p>
             </article>

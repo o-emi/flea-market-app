@@ -13,7 +13,7 @@
 
             <section class="purchase-form__product">
                 <div class="purchase-form__product-img">
-                    <img src="{{ asset($item->image_url) }}"alt="{{ $item->name }}">
+                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
                 </div>
                 <div class="purchase-form__product-info">
                     <h2>{{ $item->name }}</h2>
@@ -79,11 +79,20 @@
                 </table>
             </div>
 
-            <form action="{{ route('purchase.store') }}" method="POST">
+            <form action="{{ route('purchase.store', $item->id) }}" method="POST">
               @csrf
+
               <input type="hidden" name="item_id" value="{{ $item->id }}">
               <input type="hidden" name="payment_method" id="payment_method_hidden">
-              <input type="hidden" name="address_id" value="{{ auth()->id() }}">
+
+              <input type="hidden" name="postal_code"
+                value="{{ $address['postal_code'] ?? $user->postal_code }}">
+
+              <input type="hidden" name="address"
+                value="{{ $address['address'] ?? $user->address }}">
+
+              <input type="hidden" name="building_name"
+                value="{{ $address['building_name'] ?? $user->building_name }}">
 
               <button type="submit" class="purchase-form__btn">購入する</button>
             </form>
