@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
@@ -13,28 +14,40 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $tab = $request->query('tab');
+        $keyword = $request->query('keyword');
 
         if ($tab === 'mylist') {
 
             if (!Auth::check()) {
                 $items = collect();
             } else {
-                $items = Item::whereHas('likes', function ($query) {
+                $query = Item::whereHas('likes', function ($query) {
                     $query->where('user_id', Auth::id());
-                })->get();
+                });
+
+
+                if ($keyword) {
+                    $query->where('name', 'like', "%{$keyword}%");
+                }
+
+                $items = $query->get();
             }
 
-        } else {
+        }else {
             $query = Item::query();
 
             if (Auth::check()) {
                 $query->where('user_id', '!=', Auth::id());
             }
 
+            if ($keyword) {
+                $query->where('name', 'like', "%{$keyword}%");
+            }
+
             $items = $query->get();
         }
 
-        return view('items.index', compact('items', 'tab'));
+        return view('items.index', compact('items', 'tab' ,'keyword'));
     }
 
 
@@ -44,6 +57,7 @@ class ItemController extends Controller
         $item = Item::with(['comments.user'])->findOrFail($item->id);
         return view('items.detail', compact('item'));
     }
+
 
     public function purchase(Item $item)
     {
@@ -58,6 +72,7 @@ class ItemController extends Controller
         return view('purchase.index', compact('item', 'user'));
     }
 
+
     public function create()
     {
         $categories = Category::all();
@@ -65,15 +80,8 @@ class ItemController extends Controller
         return view('items.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
-        $request->validate([
-            'item_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'name' => 'required',
-            'price' => 'required|integer',
-            'condition'  => 'required',
-            'categories' => 'required|array|min:1',
-        ]);
 
         $imagePath = $request->file('item_image')->store('items', 'public');
 

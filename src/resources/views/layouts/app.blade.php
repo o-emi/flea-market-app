@@ -16,7 +16,14 @@
       <img src="{{ asset('images/logo/coachtech.png') }}" alt="COACHTECH ロゴ">
 
         <div class="search-form">
-          <input type="text" placeholder="なにをお探しですか?">
+            <form action="{{ route('items.index') }}" method="GET">
+
+              @if(request('tab'))
+                  <input type="hidden" name="tab" value="{{ request('tab') }}">
+              @endif
+
+              <input type="text" name="keyword" value="{{ request('keyword')}}" placeholder="なにをお探しですか?" >
+            </form>
         </div>
 
         <nav class="navigation">
