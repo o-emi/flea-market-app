@@ -8,6 +8,8 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PurchaseController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 Route::get('/', [ItemController::class, 'index'])
     ->name('items.index');
@@ -27,7 +29,29 @@ Route::get('/item/{item}', [ItemController::class, 'show'])
   ->name('items.show');
 
 
-Route::middleware('auth')->group(function () {
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    $request->session()->forget('url.intended');
+
+    return redirect()->route('mypage.profile.edit')
+        ->with('status', 'メール認証が完了しました');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', '認証メールを再送しました');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
   Route::get('/mypage', [MypageController::class, 'index'])
     ->name('mypage.index');
   Route::get('/mypage/profile', [MypageController::class, 'edit'])

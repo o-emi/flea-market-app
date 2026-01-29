@@ -43,9 +43,14 @@
         </nav>
     </header>
 
+      @if (session('status'))
+      <div class="flash-message">
+          {{ session('status') }}
+      </div>
+      @endif
 
-  <div class="content">
-  @yield('content')
+    <div class="content">
+    @yield('content')
     </div>
   </div>
 </body>
