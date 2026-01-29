@@ -36,9 +36,10 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
+    $request->session()->forget('url.intended');
 
-    return redirect('/')
-        ->with('message', 'メール認証が完了しました');
+    return redirect()->route('mypage.profile.edit')
+        ->with('status', 'メール認証が完了しました');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
