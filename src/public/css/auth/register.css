@@ -70,7 +70,7 @@
     text-decoration: underline;
 }
 
-@media (max-width: 850px) {
+@media screen and (max-width: 850px) and (min-width: 768px) {
     .register-form {
         width: 90%;
         padding: 24px;
