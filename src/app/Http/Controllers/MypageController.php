@@ -38,8 +38,8 @@ class MypageController extends Controller
     }
 
 
-  public function update(ProfileRequest $request)
-  {
+    public function update(ProfileRequest $request)
+    {
         $user = auth()->user();
 
         if ($request->hasFile('profile_image')) {

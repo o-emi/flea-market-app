@@ -24,7 +24,7 @@ class PurchaseController extends Controller
             ];
 
         return view('purchase.index', compact('item', 'user', 'address'));
-      }
+    }
 
     public function editAddress(Item $item)
     {
