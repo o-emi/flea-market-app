@@ -21,12 +21,31 @@ body {
     gap: 80px;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 850px) and (min-width: 768px) {
+
     .item-detail-form__inner {
         flex-direction: column;
         gap: 30px;
     }
+
+    .item-detail-form {
+        margin: 20px auto;
+    }
+
+    .item-detail-form__name {
+        font-size: 22px;
+    }
+
+    .item-detail-form__price {
+        font-size: 24px;
+    }
+
+    .item-detail-form__btn {
+        font-size: 16px;
+        padding: 15px 0;
+    }
 }
+
 
 .item-detail-form__image-wrapper {
     flex: 1;
@@ -35,7 +54,7 @@ body {
 .item-detail-form__image {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1; 
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     background-color: #f0f0f0;
 }
