@@ -11,23 +11,14 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
 
-      if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('email', 'password'))) {
         $request->session()->regenerate();
         return redirect()->route('items.index');
     }
 
-      return back()->withErrors([
-      'email' => 'ログイン情報が正しくありません。',
-      ])->onlyInput('email');
+        return back()->withErrors([
+        'email' => 'ログイン情報が正しくありません。',
+        ])->onlyInput('email');
     }
 
-    public function logout()
-    {
-
-      Auth::logout();
-      request()->session()->invalidate();
-      request()->session()->regenerateToken();
-
-      return redirect('/login');
-    }
 }
