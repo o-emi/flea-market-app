@@ -45,7 +45,11 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', '認証メールを再送しました');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+Route::get('/purchase/success', [PurchaseController::class, 'success'])
+->name('purchase.success');
 
+Route::get('/purchase/cancel', [PurchaseController::class, 'cancel'])
+->name('purchase.cancel');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])
@@ -53,7 +57,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mypage/profile', [MypageController::class, 'edit'])
     ->name('mypage.profile.edit');
     Route::post('/mypage/profile', [MypageController::class, 'update'])
-        ->name('mypage.profile.update');
+    ->name('mypage.profile.update');
 
     Route::get('/sell', [ItemController::class, 'create'])
     ->name('sell');
@@ -73,5 +77,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     ->name('purchase.address.store');
     Route::post('/purchase/{item}', [PurchaseController::class, 'store'])
     ->name('purchase.store');
-
 });
