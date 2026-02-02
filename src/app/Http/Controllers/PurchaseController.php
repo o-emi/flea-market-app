@@ -9,7 +9,6 @@ use App\Models\Purchase;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\AddressRequest;
 
-
 class PurchaseController extends Controller
 {
     public function show(Item $item)
@@ -33,7 +32,6 @@ class PurchaseController extends Controller
         return view('purchase.address-change', compact('item', 'address'));
     }
 
-
     public function storeAddress(AddressRequest $request, Item $item)
     {
         session([
@@ -46,7 +44,6 @@ class PurchaseController extends Controller
 
         return redirect()->route('purchase.index', $item->id);
     }
-
 
     public function store(PurchaseRequest $request)
     {
@@ -73,6 +70,5 @@ class PurchaseController extends Controller
 
         return redirect()->route('mypage.index');
     }
-
 }
 

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Storage;
 
-
 class MypageController extends Controller
 {
     public function index(Request $request)
@@ -29,14 +28,12 @@ class MypageController extends Controller
     ));
     }
 
-
     public function edit()
     {
         $user = auth()->user();
 
         return view('mypage.profile', compact('user'));
     }
-
 
     public function update(ProfileRequest $request)
     {
@@ -67,5 +64,4 @@ class MypageController extends Controller
             ->route('mypage.index')
             ->with('success', 'プロフィールを更新しました');
     }
-
 }

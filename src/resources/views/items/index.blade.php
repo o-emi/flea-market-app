@@ -26,21 +26,21 @@
         </a>
     </div>
 
-      <div class="item-index-form__grid">
+    <div class="item-index-form__grid">
         @foreach ($items as $item)
-          <div class="item-index-form-card">
-            <div class="item-index-form-card__image">
-              <a href="{{ route('items.show', $item) }}">
-                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
-              </a>
+            <div class="item-index-form-card">
+                <div class="item-index-form-card__image">
+                    <a href="{{ route('items.show', $item) }}">
+                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}">
+                    </a>
 
-              @if ($item->is_sold)
-                <span class="item-index-form-card__sold">Sold</span>
-              @endif
+                    @if ($item->is_sold)
+                        <span class="item-index-form-card__sold">Sold</span>
+                    @endif
+                </div>
+
+                <p class="item-index-form-card__name">{{ $item->name }}</p>
             </div>
-
-            <p class="item-index-form-card__name">{{ $item->name }}</p>
-        </div>
         @endforeach
     </div>
 

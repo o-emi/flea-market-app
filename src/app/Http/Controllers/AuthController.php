@@ -10,7 +10,6 @@ class AuthController extends Controller
 {
     public function login(LoginRequest $request)
     {
-
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             return redirect()->route('items.index');
@@ -23,7 +22,6 @@ class AuthController extends Controller
 
     public function logout()
     {
-
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();

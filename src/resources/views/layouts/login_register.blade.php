@@ -11,15 +11,15 @@
 </head>
 
 <body>
-  <header class="header">
-    <img src="{{ asset('images/logo/coachtech.png') }}" alt="COACHTECH ロゴ">
-  </header>
+    <header class="header">
+        <img src="{{ asset('images/logo/coachtech.png') }}" alt="COACHTECH ロゴ">
+    </header>
 
-  <div class="login_register">
-    <div class="content">
-      @yield('content')
+    <div class="login_register">
+        <div class="content">
+            @yield('content')
+        </div>
     </div>
-  </div>
 </body>
 
 </html>

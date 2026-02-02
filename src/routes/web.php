@@ -26,7 +26,7 @@ Route::post('/login', [AuthController::class, 'login'])
     ->name('login');
 
 Route::get('/item/{item}', [ItemController::class, 'show'])
-  ->name('items.show');
+    ->name('items.show');
 
 
 Route::get('/email/verify', function () {
@@ -52,30 +52,29 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-  Route::get('/mypage', [MypageController::class, 'index'])
+    Route::get('/mypage', [MypageController::class, 'index'])
     ->name('mypage.index');
-  Route::get('/mypage/profile', [MypageController::class, 'edit'])
+    Route::get('/mypage/profile', [MypageController::class, 'edit'])
     ->name('mypage.profile.edit');
-  Route::post('/mypage/profile', [MypageController::class, 'update'])
-        ->name('mypage.profile.update');
+    Route::post('/mypage/profile', [MypageController::class, 'update'])
+    ->name('mypage.profile.update');
 
-  Route::get('/sell', [ItemController::class, 'create'])
+    Route::get('/sell', [ItemController::class, 'create'])
     ->name('sell');
-  Route::post('/items', [ItemController::class, 'store'])
+    Route::post('/items', [ItemController::class, 'store'])
     ->name('items.store');
 
-  Route::post('/items/{item}/like', [LikeController::class, 'toggle'])
+    Route::post('/items/{item}/like', [LikeController::class, 'toggle'])
     ->name('items.like');
-  Route::post('/items/{item}/comments', [CommentController::class, 'store'])
+    Route::post('/items/{item}/comments', [CommentController::class, 'store'])
     ->name('comments.store');
 
-  Route::get('/purchase/{item}', [ItemController::class, 'purchase'])
+    Route::get('/purchase/{item}', [ItemController::class, 'purchase'])
     ->name('purchase.index');
-  Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress'])
+    Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress'])
     ->name('purchase.address-change');
-  Route::post('/purchase/address/{item}', [PurchaseController::class, 'storeAddress'])
+    Route::post('/purchase/address/{item}', [PurchaseController::class, 'storeAddress'])
     ->name('purchase.address.store');
-  Route::post('/purchase/{item}', [PurchaseController::class, 'store'])
+    Route::post('/purchase/{item}', [PurchaseController::class, 'store'])
     ->name('purchase.store');
-
 });

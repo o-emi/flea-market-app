@@ -45,20 +45,20 @@
                     <a href="{{ route('purchase.address-change', $item->id) }}" class="purchase-form__link">変更する</a>
                 </div>
                 <div class="purchase-form__section-content">
-                  <div class="purchase-form__address">
-                      @php
-                      $address = session('purchase_address');
-                      @endphp
+                    <div class="purchase-form__address">
+                        @php
+                            $address = session('purchase_address');
+                        @endphp
 
-                      <p class="purchase-form__address-zip">
-                          〒 {{ $address['postal_code'] ?? $user->postal_code ?? '---' }}
-                      </p>
+                        <p class="purchase-form__address-zip">
+                            〒 {{ $address['postal_code'] ?? $user->postal_code ?? '---' }}
+                        </p>
 
-                      <p class="purchase-form__address-text">
-                          {{ $address['address'] ?? $user->address ?? '住所未登録' }}
-                          {{ $address['building_name'] ?? $user->building_name ?? '' }}
-                      </p>
-                  </div>
+                        <p class="purchase-form__address-text">
+                            {{ $address['address'] ?? $user->address ?? '住所未登録' }}
+                            {{ $address['building_name'] ?? $user->building_name ?? '' }}
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -80,21 +80,19 @@
             </div>
 
             <form action="{{ route('purchase.store', $item->id) }}" method="POST">
-              @csrf
+                @csrf
 
-              <input type="hidden" name="item_id" value="{{ $item->id }}">
-              <input type="hidden" name="payment_method" id="payment_method_hidden">
+                <input type="hidden" name="item_id" value="{{ $item->id }}">
 
-              <input type="hidden" name="postal_code"
-                value="{{ $address['postal_code'] ?? $user->postal_code }}">
+                <input type="hidden" name="payment_method" id="payment_method_hidden">
 
-              <input type="hidden" name="address"
-                value="{{ $address['address'] ?? $user->address }}">
+                <input type="hidden" name="postal_code" value="{{ $address['postal_code'] ?? $user->postal_code }}">
 
-              <input type="hidden" name="building_name"
-                value="{{ $address['building_name'] ?? $user->building_name }}">
+                <input type="hidden" name="address" value="{{ $address['address'] ?? $user->address }}">
 
-              <button type="submit" class="purchase-form__btn">購入する</button>
+                <input type="hidden" name="building_name" value="{{ $address['building_name'] ?? $user->building_name }}">
+
+                <button type="submit" class="purchase-form__btn">購入する</button>
             </form>
         </aside>
     </div>

@@ -25,7 +25,6 @@
             @error('item_image')
                 <p class="error-message">{{ $message }}</p>
             @enderror
-
         </section>
 
         <div class="item-exhibition-form__section-title">商品の詳細</div>
@@ -42,15 +41,14 @@
                             value="{{ $category->id }}"
                             {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}
                 >
-                      <span>{{ $category->name }}</span>
+                        <span>{{ $category->name }}</span>
                     </label>
                 @endforeach
-              </div>
+            </div>
 
-              @error('categories')
-                  <p class="error-message">{{ $message }}</p>
-              @enderror
-
+            @error('categories')
+                <p class="error-message">{{ $message }}</p>
+            @enderror
         </section>
 
         <section class="item-exhibition-form-section">
@@ -66,7 +64,6 @@
                 @error('condition')
                     <p class="error-message">{{ $message }}</p>
                 @enderror
-
             </div>
         </section>
 
@@ -79,7 +76,6 @@
             @error('name')
                 <p class="error-message">{{ $message }}</p>
             @enderror
-
         </section>
 
         <section class="item-exhibition-form-section">
@@ -95,7 +91,6 @@
             @error('description')
                 <p class="error-message">{{ $message }}</p>
             @enderror
-
         </section>
 
         <section class="item-exhibition-form-section">
@@ -108,7 +103,6 @@
             @error('price')
                 <p class="error-message">{{ $message }}</p>
             @enderror
-
         </section>
 
         <div class="item-exhibition-form-submit">
