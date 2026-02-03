@@ -1,0 +1,21 @@
+.purchase-result {
+    text-align: center;
+    margin-top: 100px;
+    width: 100%;
+}
+
+.purchase-result__title {
+    margin-bottom: 30px;
+    font-size: 24px;
+    display: block;
+}
+
+.purchase-result__link {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #1fabe7;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 auto;
+}

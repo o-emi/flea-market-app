@@ -14,10 +14,6 @@ use Illuminate\Http\Request;
 Route::get('/', [ItemController::class, 'index'])
     ->name('items.index');
 
-Route::get('/register', [RegisterController::class, 'create'])
-    ->middleware('guest')
-    ->name('register');
-
 Route::post('/register', [RegisterController::class, 'store'])
     ->middleware('guest');
 
@@ -49,7 +45,11 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', '認証メールを再送しました');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+Route::get('/purchase/success', [PurchaseController::class, 'success'])
+->name('purchase.success');
 
+Route::get('/purchase/cancel', [PurchaseController::class, 'cancel'])
+->name('purchase.cancel');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/mypage', [MypageController::class, 'index'])

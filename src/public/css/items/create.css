@@ -172,3 +172,24 @@
     font-size: 12px;
     margin-top: 5px;
 }
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+
+    .item-exhibition-form {
+        padding: 30px 15px;
+    }
+
+    .item-exhibition-form__section-title {
+        margin: 30px 0 15px;
+        font-size: 17px;
+    }
+
+    .image-upload-area {
+        padding: 20px;
+    }
+
+    .category-group {
+        gap: 8px;
+    }
+
+}

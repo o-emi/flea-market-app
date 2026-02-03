@@ -19,13 +19,4 @@ class AuthController extends Controller
             'email' => 'ログイン情報が正しくありません。',
             ])->onlyInput('email');
         }
-
-    public function logout()
-    {
-        Auth::logout();
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
-
-        return redirect('/login');
-    }
 }

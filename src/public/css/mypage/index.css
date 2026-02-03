@@ -148,22 +148,14 @@
     font-weight: 500;
 }
 
-@media (max-width: 850px) {
-.mypage-form__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px 20px;
-    padding-bottom: 80px;
-}
-}
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .mypage-form__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+    }
 
-@media (max-width: 500px) {
-.mypage-form__user-info {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 30px;
-    margin-bottom: 60px;
-    padding-left: 20px;
-}
+    .mypage-form__user-name {
+        font-size: 24px;
+        margin-right: 80px;
+    }
 }

@@ -72,3 +72,26 @@
     font-size: 15px;
     color: #333;
 }
+
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .item-index-form {
+        padding: 20px 25px 0 25px;
+    }
+
+    .item-index-form__tabs {
+        gap: 25px;
+    }
+
+    .item-index-form__grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+        row-gap: 25px;
+    }
+
+    .item-index-form-card__name {
+        font-size: 14px;
+    }
+
+}
+

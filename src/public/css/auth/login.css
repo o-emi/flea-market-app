@@ -65,3 +65,24 @@
     color: #419DFF;
     font-size: 14px;
 }
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .login-form {
+        width: 400px;
+        margin-top: 40px;
+        padding: 25px;
+    }
+
+    .login-form__heading {
+        font-size: 22px;
+    }
+
+    .login-form__label {
+        font-size: 15px;
+    }
+
+    .login-form__btn {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
