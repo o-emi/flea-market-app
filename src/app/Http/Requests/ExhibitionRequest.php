@@ -33,7 +33,7 @@ class ExhibitionRequest extends FormRequest
         ];
     }
 
-      public function messages()
+    public function messages()
     {
         return [
             'name.required'        => '商品名を入力してください。',
@@ -49,5 +49,4 @@ class ExhibitionRequest extends FormRequest
             'price.min'            => '商品価格は0円以上で入力してください。',
         ];
     }
-
 }

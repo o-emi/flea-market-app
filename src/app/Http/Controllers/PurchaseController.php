@@ -10,7 +10,6 @@ use App\Models\Purchase;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\AddressRequest;
 
-
 class PurchaseController extends Controller
 {
     public function show(Item $item)
@@ -112,7 +111,7 @@ class PurchaseController extends Controller
             'postal_code'   => auth()->user()->postal_code,
             'address'       => auth()->user()->address,
             'building_name' => auth()->user()->building_name,
-];
+        ];
 
         Purchase::create([
             'user_id'       => $userId,

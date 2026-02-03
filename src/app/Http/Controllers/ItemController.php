@@ -58,7 +58,6 @@ class ItemController extends Controller
         return view('items.detail', compact('item'));
     }
 
-
     public function purchase(Item $item)
     {
         if ($item->is_sold) {
@@ -72,7 +71,6 @@ class ItemController extends Controller
         return view('purchase.index', compact('item', 'user'));
     }
 
-
     public function create()
     {
         $categories = Category::all();
@@ -82,7 +80,6 @@ class ItemController extends Controller
 
     public function store(ExhibitionRequest $request)
     {
-
         $imagePath = $request->file('item_image')->store('items', 'public');
 
         $item = Item::create([
@@ -101,7 +98,4 @@ class ItemController extends Controller
 
         return redirect()->route('items.index');
     }
-
-
-
 }
