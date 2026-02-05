@@ -8,6 +8,6 @@
 @section('content')
 <div class="purchase-result">
     <h1 class="purchase-result__title">購入が完了しました</h1>
-    <a href="{{ route('mypage.index') }}" class="purchase-result__link">マイページへ</a>
+    <a href="{{ route('items.index') }}" class="purchase-result__link">商品一覧へ</a>
 </div>
 @endsection

@@ -28,7 +28,7 @@
                 <label class="address-change-form__label" for="address">住所</label>
                 <input class="address-change-form__input" type="text" name="address" id="address">
                 <p class="address-change-form__error-message">
-                    m@error('address')
+                    @error('address')
                         {{ $message }}
                     @enderror
                 </p>
