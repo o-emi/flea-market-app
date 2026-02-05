@@ -46,6 +46,26 @@ DB_DATABASE=laravel_db
 DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
+## Migration に関する補足（詳細）
+マイグレーション実行時の注意点として、
+本プロジェクトでは Doctrine DBAL を使用しています。
+
+## 背景
+Laravel では、既存カラム名を変更する際に
+renameColumn メソッドを使用しますが、
+Laravel の仕様上、この処理には Doctrine DBAL が必要となります。
+
+本プロジェクトでは、テーブル設計の都合により
+既存カラム名の変更を行っているため、
+追加で Doctrine DBAL を導入しています。
+
+## 対応方法
+以下のコマンドを実行し、Doctrine DBAL をインストールしてください。
+```bash
+composer require doctrine/dbal:^3.0
+```
+※ Laravel と DBAL のバージョン互換性のため、3系を指定しています。
+
 4. アプリケーションキーの作成
 ``` bash
 php artisan key:generate
@@ -55,26 +75,6 @@ php artisan key:generate
 ``` bash
 php artisan migrate
 ```
-### Migration に関する補足（詳細）
-マイグレーション実行時の注意点として、
-本プロジェクトでは Doctrine DBAL を使用しています。
-
-### 背景
-Laravel では、既存カラム名を変更する際に
-renameColumn メソッドを使用しますが、
-Laravel の仕様上、この処理には Doctrine DBAL が必要となります。
-
-本プロジェクトでは、テーブル設計の都合により
-既存カラム名の変更を行っているため、
-追加で Doctrine DBAL を導入しています。
-
-### 対応方法
-以下のコマンドを実行し、Doctrine DBAL をインストールしてください。
-```bash
-composer require doctrine/dbal:^3.0
-```
-※ Laravel と DBAL のバージョン互換性のため、3系を指定しています。
-
 
 6. シーディングの実行
 初期データを投入します。
@@ -157,4 +157,4 @@ php artisan storage:link
 ---
 
 ## ER図
-※作成予定
+![ER図](docs/er.png)
