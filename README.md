@@ -87,15 +87,8 @@ php artisan storage:link
 
 ## ログイン情報
 
-※ 以下は Seeder により作成されているテストユーザー例です。
-（実際の Seeder の内容に応じて修正してください）
-
-### 一般ユーザー
+### 一般ユーザー（UserSeeder により作成）
 - メールアドレス：test@example.com
-- パスワード：password
-
-### 管理者ユーザー（作成している場合）
-- メールアドレス：admin@example.com
 - パスワード：password
 
 ---
