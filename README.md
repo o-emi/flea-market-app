@@ -97,13 +97,25 @@ php artisan storage:link
 
 本アプリでは、新規登録後にメール認証を行わないとログインできない仕様となっています。
 
-### 開発環境でのメール確認方法
+### 開発環境でのメール確認設定
 
-開発環境では MailHog を使用しています。
+開発環境では MailHog を使用しています
+.env に以下を設定してください（MailHog 用）:
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=test@example.com
+MAIL_FROM_NAME="Flea Market App"
+```
 
 - 新規登録後、認証メールは MailHog に届きます
 - メール内の「認証はこちら」リンクをクリックすると認証が完了します
-- 認証完了後はプロフィール設定画面へ遷移します
+- メール認証完了後、認証完了画面が表示されます。画面内の「商品一覧へ」ボタンを押すと、商品一覧画面へ遷移します。
 
 ---
 
