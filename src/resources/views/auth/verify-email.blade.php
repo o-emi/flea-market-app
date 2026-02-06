@@ -17,7 +17,7 @@
         @if (app()->environment('local'))
             <div class="verify-email-form__action">
                 <a href="http://localhost:8025" target="_blank" class="btn-verify">
-                メールを確認する（開発用）
+                認証はこちらから
                 </a>
             </div>
         @endif
